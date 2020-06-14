@@ -67,44 +67,25 @@ animated = ["Big Hero 6","Tangled","Kubo","Fantastic Mr.Fox","Gru","Chicken Litt
 
 halloffame = ["Sorry to Bother you", "Midsommar"]
 
-print ("There are " + (str(len(scifi))) + " movies in scifi")
-print ("There are " + (str(len(drama))) + " movies in drama")
-print ("There are " + (str(len(horror))) + " movies in horror")
-print ("There are " + (str(len(comedy))) + " movies in comedy")
-print ("There are " + (str(len(action))) + " movies in action")
-print ("There are " + (str(len(animated))) + " movies in animated")
+print (f"There are {str(len(scifi))} movies in scifi")
+print (f"There are {str(len(drama))} movies in drama")
+print (f"There are {str(len(horror))} movies in horror")
+print (f"There are {str(len(comedy))} movies in comedy")
+print (f"There are {str(len(action))} movies in action")
+print (f"There are {str(len(animated))} movies in animated")
 
 while True:
-
-    genre = input("Which genre do you want to see ? scifi, drama, horror, comedy, action")
-
-    if genre == "scifi":
-        numbr = r.randint(0, (int(len(scifi) + 1)))
-        movie = (str(scifi[numbr]))
+    try:
+        choose = input("Which genre do you want to see ? scifi, drama, horror, comedy, action")
+        genre = vars()[choose]
+        numbr = r.randint(0, (int(len(genre) + 1)))
+        movie = (str(genre[numbr]))
         print(movie)
-    if genre == "drama":
-        numbr = r.randint(0, (int(len(drama) + 1)))
-        movie = (str(drama[numbr]))
-        print (movie)
-    if genre == "horror":
-        numbr = r.randint(0, (int(len(horror) + 1)))
-        movie = (str(horror[numbr]))
-        print (movie)
-    if genre == "comedy":
-        numbr = r.randint(0, (int(len(comedy) + 1)))
-        movie = (str(comedy[numbr]))
-        print (movie)
-    if genre == "action":
-        numbr = r.randint(0, (int(len(action) + 1)))
-        movie = (str(action[numbr]))
-        print (movie)
-    if genre == "animated":
-        numbr = r.randint(0, (int(len(animated) + 1)))
-        movie = (str(animated[numbr]))
-        print (movie)
-
-    reshuffle = input("Would you like another pick ?")
-    if reshuffle == "no":
+    except KeyError:
+        print("Please type the genre correctly.")
+    else:
+        reshuffle = input("Would you like another pick ?")
+        if reshuffle == "no":
             break
 
 url = ('https://www.youtube.com/results?search_query=' + movie + ' trailer')
